@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Узнайте, сколько вы можете заработать на блоге, продавая свои услуги! Рассчитайте потенциальный доход с помощью нашего калькулятора.">
+    <meta name="keywords" content="калькулятор дохода, блог, заработок, конверсия, онлайн-калькулятор">
+    <meta name="author" content="Bogobieva">
+    <!-- Open Graph для социальных сетей -->
+    <meta property="og:title" content="Калькулятор дохода от блога">
+    <meta property="og:description" content="Рассчитайте, сколько вы можете заработать на блоге, продавая свои услуги!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ваш-username.github.io/blog-income-calculator/">
+    <meta property="og:image" content="https://ваш-username.github.io/blog-income-calculator/og-image.jpg">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Калькулятор дохода от блога</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1a1a1a; /* Темный фон для тела */
+            color: #d4a017; /* Золотистый текст */
+            box-sizing: border-box;
+        }
+        .calculator {
+            background: #000000; /* Черный фон для калькулятора */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(212, 160, 23, 0.5); /* Золотистая тень */
+            border: 2px solid #d4a017; /* Золотистая граница */
+            position: relative; /* Для позиционирования надписи */
+        }
+        .header-text {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 12px;
+            color: #a68a00; /* Светло-золотистый текст для надписи */
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #d4a017; /* Золотистый текст для меток */
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 5px;
+            border: 1px solid #d4a017; /* Золотистая граница для полей */
+            border-radius: 5px;
+            background-color: #333333; /* Темный фон для полей ввода */
+            color: #d4a017; /* Золотистый текст в полях */
+            box-sizing: border-box;
+        }
+        button {
+            background: #d4a017; /* Золотистая кнопка */
+            color: #000000; /* Черный текст на кнопке */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button:hover {
+            background: #b38600; /* Более темный золотистый цвет при наведении */
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #d4a017; /* Золотистый текст для результата */
+            text-align: center;
+        }
+        #result-image {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #result-image img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #d4a017; /* Золотистая рамка для изображения */
+            border-radius: 5px;
+        }
+        #cta {
+            margin-top: 20px;
+            font-style: italic;
+            color: #d4a017; /* Золотистый текст для CTA */
+            text-align: center;
+        }
+        #cta a {
+            color: #d4a017; /* Золотистый цвет для ссылки */
+            text-decoration: underline;
+        }
+        #cta a:hover {
+            color: #b38600; /* Более темный золотистый при наведении */
+        }
+        .error {
+            color: #ff4444; /* Красный текст для ошибок, чтобы контрастировать */
+            font-size: 14px;
+            margin-top: 5px;
+            text-align: center;
+        }
+        .product-section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #d4a017;
+            border-radius: 5px;
+        }
+        .remove-btn {
+            background: #b22222; /* Тёмно-красный цвет для кнопки "Удалить" */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            margin-top: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .remove-btn:hover {
+            background: #8b1a1a; /* Ещё более тёмный красный при наведении */
+        }
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 600px) {
+            body {
+                margin: 10px;
+                padding: 10px;
+            }
+            .calculator {
+                padding: 15px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            #result {
+                font-size: 16px;
+            }
+            .header-text {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Сколько я могу заработать на блоге, продавая свои услуги?</h2>
+        <div class="header-text">Bogobieva</div>
+        
+        <label>Средний охват постов (человек):</label>
+        <input type="number" id="reach" placeholder="Например, 100">
+        
+        <div id="products">
+            <div class="product-section">
+                <label>Цена продукта (₽):</label>
+                <input type="number" class="product-price" placeholder="Например, 50">
+                <button class="remove-btn" onclick="removeProduct(this)">Удалить</button>
+            </div>
+        </div>
+        
+        <button onclick="addProduct()">Добавить продукт (+)</button>
+        <button onclick="calculate()">Рассчитать</button>
+        
+        <div id="result">Введите данные и нажмите "Рассчитать"</div>
+        <div id="result-image"></div>
+        <div id="error" class="error"></div>
+        <div id="cta"></div>
+    </div>
+
+    <script>
+        function addProduct() {
+            const productsDiv = document.getElementById('products');
+            const newProduct = document.createElement('div');
+            newProduct.className = 'product-section';
+            newProduct.innerHTML = `
+                <label>Цена продукта (₽):</label>
+                <input type="number" class="product-price" placeholder="Например, 50">
+                <button class="remove-btn" onclick="removeProduct(this)">Удалить</button>
+            `;
+            productsDiv.appendChild(newProduct);
+        }
+
+        function removeProduct(button) {
+            button.parentElement.remove();
+        }
+
+        function calculate() {
+            console.log("Функция calculate запущена");
+
+            // Получаем данные по среднему охвату
+            const reachInput = document.getElementById('reach').value;
+
+            console.log("Введенные данные (база):", {
+                reach: reachInput
+            });
+
+            // Преобразуем в числа
+            const reach = parseFloat(reachInput) || 0;
+
+            console.log("Преобразованные числа (база):", {
+                reach
+            });
+
+            // Очищаем предыдущие ошибки
+            document.getElementById('error').innerHTML = '';
+
+            // Проверка валидности базовых данных
+            if (reach <= 0) {
+                document.getElementById('error').innerHTML = 'Средний охват постов должен быть больше 0';
+                document.getElementById('result').innerHTML = 'Введите данные и нажмите "Рассчитать"';
+                document.getElementById('result-image').innerHTML = '';
+                document.getElementById('cta').innerHTML = '';
+                console.log("Ошибка: охват <= 0");
+                return;
+            }
+
+            // Получаем данные по продуктам
+            const products = document.querySelectorAll('.product-section');
+            let minPrice = Infinity; // Минимальная цена среди всех продуктов
+            let maxPrice = -Infinity; // Максимальная цена среди всех продуктов
+
+            products.forEach(product => {
+                const priceInput = product.querySelector('.product-price').value;
+                const price = parseFloat(priceInput) || 0;
+
+                console.log("Данные продукта:", { price });
+
+                if (price <= 0) {
+                    document.getElementById('error').innerHTML = 'Цена продукта должна быть больше 0';
+                    document.getElementById('result').innerHTML = 'Введите данные и нажмите "Рассчитать"';
+                    document.getElementById('result-image').innerHTML = '';
+                    document.getElementById('cta').innerHTML = '';
+                    console.log("Ошибка: цена продукта <= 0");
+                    return;
+                }
+
+                // Находим минимальную и максимальную цены среди всех продуктов
+                minPrice = Math.min(minPrice, price);
+                maxPrice = Math.max(maxPrice, price);
+            });
+
+            if (products.length === 0) {
+                document.getElementById('error').innerHTML = 'Добавьте хотя бы один продукт';
+                document.getElementById('result').innerHTML = 'Введите данные и нажмите "Рассчитать"';
+                document.getElementById('result-image').innerHTML = '';
+                document.getElementById('cta').innerHTML = '';
+                console.log("Ошибка: нет продуктов");
+                return;
+            }
+
+            // Минимальный доход (X) — минимальная цена продукта
+            const minIncome = minPrice;
+
+            // Максимальный доход (Y) — (средний охват / 3, округлённый) × цена самого дорогого продукта
+            const reachDividedByThree = Math.round(reach / 3);
+            const maxIncome = reachDividedByThree * maxPrice;
+
+            // Убедимся, что максимальный доход не меньше минимального
+            if (maxIncome < minIncome) {
+                maxIncome = minIncome * 2; // Устанавливаем максимальный доход как в 2 раза больше минимального, если он меньше
+            }
+
+            // Вывод результата с диапазоном
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `Ваш потенциальный доход: от ${minIncome.toFixed(2)} ₽ до ${maxIncome.toFixed(2)} ₽ в месяц (при конверсии до 15%)`;
+
+            // Добавляем изображение в результат
+            const resultImageDiv = document.getElementById('result-image');
+            resultImageDiv.innerHTML = `<img src="https://ваш-username.github.io/blog-income-calculator/banner.jpg" alt="Учимся копить честно кэш">`;
+
+            // Вывод CTA
+            document.getElementById('cta').innerHTML = `Хотите узнать, как увеличить конверсию? Подписывайся на мой блог (<a href="https://vk.com/bogobieva_k" target="_blank">vk.com/bogobieva_k</a>) и рассылку, и забирай статью`;
+            console.log("Результат выведен:", { minIncome, maxIncome });
+        }
+
+        // Проверка загрузки страницы
+        window.onload = function() {
+            console.log("Страница загружена, калькулятор готов к работе.");
+        };
+    </script>
+</body>
+</html>
