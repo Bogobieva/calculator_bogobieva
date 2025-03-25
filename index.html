@@ -266,14 +266,14 @@
 
             // Вывод результата с диапазоном
             const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = `Ваш потенциальный доход: от ${minIncome.toFixed(2)} ₽ до ${maxIncome.toFixed(2)} ₽ в месяц (при конверсии до 15%)`;
+            resultDiv.innerHTML = `Ваш потенциальный доход: от ${minIncome.toFixed(2)} ₽ до ${maxIncome.toFixed(2)} ₽ в месяц`;
 
             // Добавляем изображение в результат
             const resultImageDiv = document.getElementById('result-image');
-            resultImageDiv.innerHTML = `<img src="https://ваш-username.github.io/blog-income-calculator/banner.jpg" alt="Учимся копить честно кэш">`;
+            resultImageDiv.innerHTML = `<img src="https://ваш-username.github.io/blog-income-calculator/banner.jpg" alt="Изображение">`;
 
             // Вывод CTA
-            document.getElementById('cta').innerHTML = `Хотите узнать, как увеличить конверсию? Подписывайся на мой блог (<a href="https://vk.com/bogobieva_k" target="_blank">vk.com/bogobieva_k</a>) и рассылку, и забирай статью`;
+            document.getElementById('cta').innerHTML = `Хотите узнать, как увеличить конверсию? Подписывайся на мой блог (<a href="https://vk.com/bogobieva_k" target="_blank">vk.com/bogobieva_k</a>) и забирай статью`;
             console.log("Результат выведен:", { minIncome, maxIncome });
         }
 
