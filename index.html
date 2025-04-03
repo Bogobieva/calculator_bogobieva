@@ -250,9 +250,9 @@
 
             // Вывод результата с диапазоном, изображением и новым текстом
             const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = `Ваш потенциальный доход: от ${minIncome.toFixed(2)} ₽ до ${adjustedMaxIncome.toFixed(2)} ₽ в месяц (при конверсии до 15%)<br>` +
+            resultDiv.innerHTML = `Ваш потенциальный доход: от ${minIncome.toFixed(2)} ₽ до ${adjustedMaxIncome.toFixed(2)} ₽ в месяц <br>` +
                                  `<img src="banner.jpg" alt="Изображение"><br>` +
-                                 `Хотите узнать как увеличивать количеством клиентов? Подписывайтесь на мой <a href="https://vk.com/bogobieva_k" target="_blank">блог</a> и забирай статью`;
+                                 `Хотите узнать как увеличить количество клиентов и добиться желаемых результатов? Подписывайтесь на мой <a href="https://vk.com/bogobieva_k" target="_blank">блог</a> и забирайте статью`;
 
             console.log("Результат выведен:", { minIncome, maxIncome: adjustedMaxIncome });
         }
